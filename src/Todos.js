@@ -6,6 +6,7 @@ const Todos = ({ todos, deleteTodo }) => {
       return (
         <div className="collection-item" key={todo.id}>
           <span
+            className="waves-effect waves-teal btn-flat filled-in"
             onClick={() => {
               deleteTodo(todo.id);
             }}>

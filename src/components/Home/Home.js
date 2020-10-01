@@ -9,7 +9,6 @@ class ToDoPage extends Component {
   };
   componentDidMount() {
     axios.get("https://jsonplaceholder.typicode.com/todos").then((res) => {
-      console.log(res);
       this.setState({
         todos: res.data.slice(0, 10),
       });
@@ -28,26 +27,10 @@ class ToDoPage extends Component {
     this.setState({ todos: todos });
   };
   render() {
-    const { todos } = this.state;
-    const todoList = todos.length ? (
-      todos.map((todo) => {
-        return (
-          <div className="post card" key={todo.id}>
-            <div className="card-content">
-              <span className="card-title">{todo.title}</span>
-              <p>{todo.body}</p>
-            </div>
-          </div>
-        );
-      })
-    ) : (
-      <div className="center">No todos yet</div>
-    );
     return (
       <div className="todo-app container">
         <h1 className="center teal-text text-lighten-2">Todo's</h1>
-        <h1>{todoList}</h1>
-        <Todos todos={this.state.todo} deleteTodo={this.deleteTodo} />
+        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
         <AddTodo addTodo={this.addTodo} />
       </div>
     );

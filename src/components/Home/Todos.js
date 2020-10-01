@@ -10,7 +10,7 @@ const Todos = ({ todos, deleteTodo }) => {
             onClick={() => {
               deleteTodo(todo.id);
             }}>
-            {todo.content}
+            {todo.title}
           </span>
         </div>
       );

@@ -5,13 +5,14 @@ const Todos = ({ todos, deleteTodo }) => {
     todos.map((todo) => {
       return (
         <div className="collection-item" key={todo.id}>
-          <span
-            className="waves-effect waves-teal btn-flat filled-in"
+          <i
+            className="material-icons teal-text btn-flat left"
             onClick={() => {
               deleteTodo(todo.id);
             }}>
-            {todo.title}
-          </span>
+            check
+          </i>
+          <span className="">{todo.title.toUpperCase()}</span>
         </div>
       );
     })
@@ -22,3 +23,5 @@ const Todos = ({ todos, deleteTodo }) => {
 };
 
 export default Todos;
+
+// waves-effect waves-teal btn-flat filled-in">

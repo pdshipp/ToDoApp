@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class AddTodo extends Component {
   state = {
-    content: null,
+    title: null,
   };
   handleChange = (e) => {
     this.setState({
@@ -13,7 +13,7 @@ class AddTodo extends Component {
     e.preventDefault();
     this.props.addTodo(this.state);
     this.setState({
-      content: " ",
+      title: " ",
     });
   };
   render() {
@@ -23,9 +23,9 @@ class AddTodo extends Component {
           <label htmlFor="content">Input Todo</label>
           <input
             type="text"
-            id="content"
+            id="title"
             onChange={this.handleChange}
-            value={this.state.content}
+            value={this.state.title}
           />
           <button className="btn waves-effect waves-light">Add Todo</button>
         </form>

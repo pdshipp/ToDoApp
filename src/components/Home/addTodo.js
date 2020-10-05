@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class AddTodo extends Component {
   state = {
-    title: null,
+    title: "",
   };
   handleChange = (e) => {
     this.setState({
@@ -13,7 +13,7 @@ class AddTodo extends Component {
     e.preventDefault();
     this.props.addTodo(this.state);
     this.setState({
-      title: " ",
+      title: "",
     });
   };
   render() {

@@ -16,21 +16,36 @@ class ToDoPage extends Component {
   }
   addTodo = (todo) => {
     todo.id = Math.random();
-    let todos = [...this.state.todos, todo];
-    this.setState({ todos: todos });
+    const todos = [...this.state.todos, todo];
+
+    this.setState({ todos });
+  };
+
+  strikeThroughTodo = (id) => {
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.checked = !todo.checked;
+        }
+        return todo;
+      }),
+    });
+    setTimeout(() => {
+      this.deleteTodo(id);
+    }, 1500);
   };
 
   deleteTodo = (id) => {
-    let todos = this.state.todos.filter((todo) => {
+    const todos = this.state.todos.filter((todo) => {
       return todo.id !== id;
     });
-    this.setState({ todos: todos });
+    this.setState({ todos });
   };
   render() {
     return (
       <div className="todo-app container">
         <h1 className="center teal-text text-lighten-2">Todo's</h1>
-        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+        <Todos todos={this.state.todos} completeTodo={this.strikeThroughTodo} />
         <AddTodo addTodo={this.addTodo} />
       </div>
     );

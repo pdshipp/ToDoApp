@@ -8,29 +8,30 @@ const Todos = ({ todos, completeTodo }) => {
       const isChecked = todo.checked ? "checked" : "";
       return (
         <div className={`collection-item ` + isChecked} key={todo.id}>
-          <label htmlFor="cbx">
-            <i
-              className="material-icons teal-text btn-flat left"
+          <label>
+            <input
+              type="checkbox"
               onClick={() => {
-                completeTodo(todo.id);
-              }}>
-              check
-            </i>
-            <Link to={"/" + todo.id}>
-              <span
-                style={{
-                  textDecoration: todo.checked ? "line-through" : "none",
-                }}
-                className="black-text">
-                {todo.title.toUpperCase()}
-              </span>
-            </Link>
+                setTimeout(() => {
+                  completeTodo(todo.id);
+                }, 200);
+              }}
+            />
+            <span
+              style={{
+                textDecoration: todo.checked ? "line-through" : "none",
+              }}
+              className="todo-text">
+              <Link to={"/" + todo.id} style={{ color: "inherit" }}>
+                {todo.title}
+              </Link>
+            </span>
           </label>
         </div>
       );
     })
   ) : (
-    <p className="center"> You have no todos left, well in!</p>
+    <p className="center"> You have no todos left!</p>
   );
   return <div className="todos collection">{todoList}</div>;
 };

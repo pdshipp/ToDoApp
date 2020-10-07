@@ -35,6 +35,10 @@ class ToDoPage extends Component {
     }, 1500);
   };
 
+  componentWillUnmount() {
+    clearTimeout(this.strikeThroughTodo);
+  }
+
   deleteTodo = (id) => {
     const todos = this.state.todos.filter((todo) => {
       return todo.id !== id;

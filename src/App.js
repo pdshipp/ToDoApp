@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/about/about";
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import TodoAbout from "./components/TodoAbout/TodoAbout";
 
 class App extends Component {
@@ -11,9 +11,11 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/:todo_id" component={TodoAbout} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/:todo_id" component={TodoAbout} />
+          </Switch>
         </div>
       </BrowserRouter>
     );

@@ -17,18 +17,14 @@ class TodoAbout extends Component {
   }
   render() {
     const todo = this.state.todo ? (
-      <div className="todo">
+      <div className="container">
         <h3>{this.state.todo.title}</h3>
       </div>
     ) : (
-      <div className="center"> Loading Todo</div>
+      <div className="center"> Hello Todo</div>
     );
 
-    return (
-      <div className="container">
-        <h4>{todo}</h4>
-      </div>
-    );
+    return <div className="center">{todo}</div>;
   }
 }
 

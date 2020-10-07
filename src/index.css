@@ -29,6 +29,15 @@ div.collection-item.checked {
 
 /* IE 10+, Fx 29+ */
 
+.todo-text {
+  color: rgb(0, 0, 0);
+  text-transform: capitalize;
+}
+
+.todo-text:hover {
+  color: rgb(41, 149, 221);
+}
+
 div.collection-item {
   transition: 1.5s;
   transform: translate(0%);

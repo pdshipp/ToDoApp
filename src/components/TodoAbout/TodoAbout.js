@@ -1,31 +1,29 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
 
 class TodoAbout extends Component {
   state = {
     todo: null,
   };
-  componentDidMount() {
-    let id = this.props.match.params.todo_id;
-    axios
-      .get("https://jsonplaceholder.typicode.com/todos/" + id)
-      .then((res) => {
-        this.setState({
-          todo: res.data,
-        });
-      });
-  }
+
   render() {
-    const todo = this.state.todo ? (
+    const todo = this.props.todo ? (
       <div className="container">
-        <h3>{this.state.todo.title}</h3>
+        <h3>{this.props.todo.title}</h3>
       </div>
     ) : (
-      <div className="center"> Hello Todo</div>
+      <div className="center">Loading data...</div>
     );
 
     return <div className="center">{todo}</div>;
   }
 }
 
-export default TodoAbout;
+const mapStateToProps = (state, ownProps) => {
+  let id = ownProps.match.params.todo_id;
+  return {
+    todo: state.todos.find((todo) => todo.id === id),
+  };
+};
+
+export default connect(mapStateToProps)(TodoAbout);
